@@ -1,0 +1,973 @@
+<head>
+
+<meta charset="UTF-8">
+
+<STYLE TYPE="text/css">
+  body {
+  background-image: url("https://yese69.com/wp-content/uploads/data/2018/1/9/download-free-royal-blue-backgrounds-1920x1080-WTG3094534.jpg");
+  background-color: black;
+  height: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+
+
+  table, {
+  border : 1px solid black;
+  border-collapse: collapse;
+  }
+tr {
+  background-color:purple;
+  color:white;
+  font-family: "century gothic";
+
+}
+
+tr:hover {
+  background-color: pink;
+  color: black;
+}
+
+#elokuvat {
+float:left;
+
+}
+#taulukot {
+  margin-left:40%;
+  margin-top:150px;
+
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius:5px;
+}
+
+button {
+  display: inline-block;
+  font-family: "century gothic";
+  font-size:18px;
+  background-color: blue;
+  color: white;
+  border: 1px solid black;
+  width: 250px;
+  border-radius:5px;
+  cursor: pointer;
+  transition: all 0.5s;
+  margin: 5px;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+button:focus{
+    background: darkblue;
+    color: white;
+}
+
+
+#header {
+  position: fixed;
+  top:0;
+  margin-top:-10px;
+  margin-right:-10px;
+  margin-left:-10px;
+  padding:0px 0px;
+  text-align:center;
+  height:150px;
+  width:100%;
+  background-color:white;
+}
+
+
+h1 {
+font-family: impact;
+}
+
+    </style>
+
+<script>
+
+// näyttää kaikki pääkaupunkiseudulla olevat näytökset
+
+function loadPkseutu() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1014", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("pkseutu").innerHTML = table;
+}
+
+// näyttää kaikki Espoon näytökset
+
+
+function loadEspoo() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1012", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("espoo").innerHTML = table;
+}
+
+// näyttää kaikki Kauppakeskus Omenan näytökset
+
+function loadOmena() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1039", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("omena").innerHTML = table;
+}
+
+// näyttää kaikki Kauppakeskus Sellon näytökset
+
+function loadSello() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1038", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("sello").innerHTML = table;
+}
+
+// näyttää kaikki Helsingin näytökset
+
+function loadHelsinki() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1002", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("helsinki").innerHTML = table;
+}
+
+// näyttää kaikki Helsingin kauppakeskus Itiksen näytökset
+
+function loadItis() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1045", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("itis").innerHTML = table;
+}
+
+// näyttää kaikki Helsingin Kinopalatsin näytökset
+
+function loadKinopalatsi() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1031", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("kinopalatsi").innerHTML = table;
+}
+
+// näyttää kaikki Helsingin Maximin näytökset
+
+function loadMaxim() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1032", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("maxim").innerHTML = table;
+}
+
+// näyttää kaikki Helsingin Tennispalatsin näytökset
+
+function loadTennispalatsi() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1033", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("tennispalatsi").innerHTML = table;
+}
+
+// näyttää kaikki Vantaan Flamingon näytökset
+
+function loadFlamingo() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1013", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("flamingo").innerHTML = table;
+}
+
+// näyttää kaikki Jyväskylän Fantasian näytökset
+
+function loadFantasia() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1015", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("fantasia").innerHTML = table;
+}
+
+// näyttää kaikki Kuopion Scalan näytökset
+
+function loadScala() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1016", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("skala").innerHTML = table;
+}
+
+// näyttää kaikki Lahden Kuvapalatsin näytökset
+
+function loadKuvapalatsi() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1017", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("kuvapalatsi").innerHTML = table;
+}
+
+// näyttää kaikki Lappeenrannan Strandin näytökset
+
+function loadStrand() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1041", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+
+  }
+document.getElementById("strand").innerHTML = table;
+}
+
+// näyttää kaikki Oulun Plazan näytökset
+
+function loadPlaza() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1018", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("plaza").innerHTML = table;
+}
+
+// näyttää kaikki Porin Promenadin näytökset
+
+function loadPromenadi() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1019", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("promenadi").innerHTML = table;
+}
+
+// näyttää kaikki Tampereen näytökset
+
+function loadTampere() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1021", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("tampere").innerHTML = table;
+}
+
+// näyttää kaikki Tampereen Cine Atlaksen näytökset
+
+function loadCineatlas() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1034", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("cineatlas").innerHTML = table;
+}
+
+// näyttää kaikki Tampereen Plevnan näytökset
+
+function loadPlevna() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1035", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("plevna").innerHTML = table;
+}
+
+// näyttää kaikki Turun Kinopalatsin näytökset
+
+function loadTkinopalatsi() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+  }
+};
+xhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=1022", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th></th><th>Elokuva</th><th>Näytös</th></tr>";
+
+var x = xmlDoc.getElementsByTagName("Show");
+
+for (i = 0; i <x.length; i++) {
+	table += "<tr><td><img src='" +
+	x[i].getElementsByTagName("EventMediumImagePortrait")[0].childNodes[0].nodeValue +
+    "'/></td><td>" +
+    x[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue + "<br><br><br>" + "Julkaisuvuosi: " +
+	x[i].getElementsByTagName("ProductionYear")[0].childNodes[0].nodeValue + "<br>" + "Pituus: " +
+	x[i].getElementsByTagName("LengthInMinutes")[0].childNodes[0].nodeValue + " min" + "<br>" + "Genre: " +
+    x[i].getElementsByTagName("Genres")[0].childNodes[0].nodeValue + "<br><br>" +
+    "<img src='" +
+    x[i].getElementsByTagName("RatingImageUrl")[0].childNodes[0].nodeValue +
+	"'/></td><td>" +
+	x[i].getElementsByTagName("TheatreAndAuditorium")[0].childNodes[0].nodeValue + "<br><br><br>" + "Alkamisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowStart")[0].childNodes[0].nodeValue + "<br><br>" + "Loppumisaika: " + "<br>" +
+	x[i].getElementsByTagName("dttmShowEnd")[0].childNodes[0].nodeValue + "<br><br></td></tr>";
+  }
+
+document.getElementById("tkinopalatsi").innerHTML = table;
+}
+
+
+  </script>
+</head>
+
+<body>
+
+  <div id ="header">
+    <img src="https://upload.wikimedia.org/wikipedia/fi/d/d6/Finnkinon_logo.svg" width="150" height="150"></img>
+    </div>
+
+  <div id ="elokuvat">
+
+<button type="button" onclick="loadPkseutu()"><span>Pääkaupunkiseutu </span></button>
+<br><br>
+
+<button type="button" onclick="loadEspoo()"><span>Espoo</span></button>
+<br><br>
+
+<button type="button" onclick="loadOmena()"><span>Espoo: Omena</span></button>
+<br><br>
+
+<button type="button" onclick="loadSello()"><span>Espoo: Sello</span></button>
+<br><br>
+
+<button type="button" onclick="loadHelsinki()"><span>Helsinki</span></button>
+<br><br>
+
+<button type="button" onclick="loadItis()"><span>Helsinki: Itis</span></button>
+<br><br>
+
+<button type="button" onclick="loadKinopalatsi()"><span>Helsinki: Kinopalatsi</span></button>
+<br><br>
+
+<button type="button" onclick="loadMaxim()"><span>Helsinki: Maxim</span></button>
+<br><br>
+
+<button type="button" onclick="loadTennispalatsi()"><span>Helsinki: Tennispalatsi</span></button>
+<br><br>
+
+<button type="button" onclick="loadFlamingo()"><span>Vantaa: Flamingo</span></button>
+<br><br>
+
+<button type="button" onclick="loadFantasia()"><span>Jyväskylä: Fantasia</span></button>
+<br><br>
+
+<button type="button" onclick="loadScala()"><span>Kuopio: SCALA</span></button>
+<br><br>
+
+<button type="button" onclick="loadKuvapalatsi()"><span>Lahti: Kuvapalatsi</span></button>
+<br><br>
+
+<button type="button" onclick="loadStrand()"><span>Lappeenranta: Strand</span></button>
+<br><br>
+
+<button type="button" onclick="loadPlaza()"><span>Oulu: Plaza</span></button>
+<br><br>
+
+<button type="button" onclick="loadPromenadi()"><span>Pori: Promenadi</span></button>
+<br><br>
+
+<button type="button" onclick="loadTampere()"><span>Tampere</span></button>
+<br><br>
+
+<button type="button" onclick="loadCineatlas()"><span>Tampere: Cine Atlas</span></button>
+<br><br>
+
+<button type="button" onclick="loadPlevna()"><span>Tampere: Plevna</span></button>
+<br><br>
+
+<button type="button" onclick="loadTkinopalatsi()"><span>Turku: Kinopalatsi</span></button>
+<br><br>
+
+
+  </div>
+
+  <div id ="taulukot">
+
+  <table id="pkseutu"></table>
+  <table id="espoo"></table>
+  <table id="omena"></table>
+  <table id="sello"></table>
+  <table id="helsinki"></table>
+  <table id="itis"></table>
+  <table id="kinopalatsi"></table>
+  <table id="maxim"></table>
+  <table id="tennispalatsi"></table>
+  <table id="flamingo"></table>
+  <table id="fantasia"></table>
+  <table id="scala"></table>
+  <table id="strand"></table>
+  <table id="plaza"></table>
+  <table id="promenadi"></table>
+  <table id="cineatlas"></table>
+  <table id="tampere"></table>
+  <table id="plevna"></table>
+  <table id="tkinopalatsi"></table>
+  </div>
+</body>
